@@ -23,7 +23,7 @@ const App = () => {
   };
   const saveToLocalStorage = (items) =>{
     localStorage.setItem('react-movie-app-favourite',JSON.stringify(items));
-  }
+  };
   const addFavouriteMovie = (movie) => {
     const newFavouritesList = [...favourites,movie];
     setFavourites(newFavouritesList);
@@ -40,7 +40,8 @@ const App = () => {
   }, [searchValue]);
   useEffect(()=>{
     const movieFavourites = JSON.parse(localStorage.getItem('react-movie-app-favourite'));
-    setFavourites(movieFavourites);
+    if (movieFavourites) {setFavourites(movieFavourites);};
+    
   },[]);
   return (
     <div className='container-fluid pt-3 movie-app'>
